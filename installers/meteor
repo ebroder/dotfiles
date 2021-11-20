@@ -2,6 +2,11 @@
 
 # depends: nvm jq
 
+if chezmoi data | jq -e ".meteor" > /dev/null; then
+  # leave existing installs in place
+  exit 0
+fi
+
 export METEOR_NODE_VERSION=v17.0.1
 export METEOR_INSTALLER_VERSION=2.5.1
 
