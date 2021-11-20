@@ -1,0 +1,23 @@
+{{- $meteor := "" -}}
+{{- $nvm := "" -}}
+
+{{- if (hasKey . "meteor") -}}
+{{-   $meteor = .meteor -}}
+{{- else -}}
+{{-   $meteor = promptBool "Setup Meteor" -}}
+{{- end -}}
+
+{{- if (hasKey . "nvm") -}}
+{{-   $nvm = .nvm -}}
+{{- else if $meteor -}}
+{{-   $nvm = true -}}
+{{- else -}}
+{{-   $nvm = promptBool "Setup NVM" -}}
+{{- end -}}
+
+[data]
+    meteor = {{ $meteor }}
+    nvm = {{ $nvm }}
+
+[interpreters.sh]
+    command = 'bash'
