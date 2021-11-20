@@ -1,0 +1,52 @@
+which code > /dev/null && export EDITOR="code -w"
+
+export LESS="-R"
+export LESSQUIET=1
+
+autoload -Uz select-word-style
+select-word-style bash
+
+# keep up to 100k events in memory
+export HISTSIZE=100000
+# keep up to 50k events in history file
+export SAVEHIST=50000
+
+# share history across sessions, don't overwrite
+setopt share_history
+# don't save to history if preceded by space
+setopt hist_ignore_space
+# only store commands once in history
+setopt hist_ignore_all_dups
+# strip superfluous whitespace
+setopt hist_reduce_blanks
+
+[ -d "$HOME/.meteor" ] && path+=("$HOME/.meteor")
+[ -d "$HOME/.local/bin" ] && path+=("$HOME/.local/bin")
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+if [ -x /opt/homebrew/bin/brew ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+    fpath+=("$(brew --prefix)/share/zsh/site-functions")
+fi
+
+if which python3 > /dev/null; then
+    path+=("$(python3 -m site --user-base)/bin")
+    manpath+=("$(python3 -m site --user-base)/share/man/")
+fi
+
+which lesspipe.sh > /dev/null && export LESSOPEN="|lesspipe.sh %s" LESS_ADVANCED_PREPROCESSOR=1
+
+\. ~/.iterm2_shell_integration.zsh
+
+autoload -Uz vcs_info
+precmd_functions+=( vcs_info )
+zstyle ":vcs_info:*" formats " (%b)" # default " (%s)-[%b]-"
+zstyle ":vcs_info:*" actionformats " (%b|%a)" # default " (%s)-[%b|%a]-"
+
+# enable using variables in PROMPT
+setopt prompt_subst
+PROMPT='%B%F{green}%n@%m%f %F{blue}%1~%f%b${vcs_info_msg_0_} %# '
+
+autoload -Uz compinit && compinit

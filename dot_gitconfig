@@ -1,0 +1,22 @@
+[user]
+	name = Evan Broder
+	signingkey = 30cb1b11
+	email = evan@ebroder.net
+[push]
+	default = upstream
+[log]
+	decorate = short
+[merge]
+	conflictstyle = diff3
+[pull]
+	rebase = true
+[rerere]
+	enabled = 1
+[rebase]
+	autosquash = true
+[fetch]
+	prune = true
+[init]
+	defaultBranch = main
+[url "git@github.com:"]
+	insteadOf = https://github.com/
