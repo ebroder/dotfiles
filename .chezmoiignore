@@ -1,2 +1,1 @@
-# installers are sourced by run_before_00_install.sh
-/installers
+/chef
