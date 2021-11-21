@@ -24,6 +24,7 @@
 /.lesshst
 /.python_history
 /.zsh_history
+/.viminfo
 
 {{ if ne .chezmoi.os "darwin" -}}
 # macOS specific
