@@ -1,1 +1,31 @@
+# Paths in the chezmoi repo that shouldn't be copied over
 /chef
+
+# Paths in the homedir that are managed by chef
+/.nvm
+
+# Paths in the homedir that shouldn't be managed
+**/.DS_Store
+/.Trash
+/.chef
+/.config/chezmoi
+/.zsh_sessions
+
+# Per-machine secrets
+/.ssh/id_*
+
+# Local cache directories
+/.cache
+/.zcompcache
+/.zcompdump
+
+# History files
+/.irb_history
+/.lesshst
+/.python_history
+/.zsh_history
+
+{{ if ne .chezmoi.os "darwin" -}}
+# macOS specific
+/.CFUserTextEncoding
+{{ end -}}
