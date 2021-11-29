@@ -6,27 +6,47 @@
 
 # Paths in the homedir that shouldn't be managed
 **/.DS_Store
+**/.localized
 /.Trash
 /.chef
 /.config/chezmoi
 /.zsh_sessions
+/Documents/Zoom
+
+# Everything in src should be a VCS repo of some sort
+/src
+
+# Network storage
+/Google Drive
+/My Drive
+
+# Synced via iCloud/iTunes
+/Pictures/Photos Library.photoslibrary
+/Movies/TV/TV Library.tvlibrary
+/Movies/TV/Media.localized/
+/Music/Music/Media.localized/
+/Music/Music/Music Library.musiclibrary/
 
 # Per-machine secrets
 /.ssh/id_*
+/.meteorsession
+/.config/op
 
 # Local cache directories
 /.cache
 /.zcompcache
 /.zcompdump
+/Library/Caches
 
 # History files
 /.irb_history
 /.lesshst
+/.node_repl_history
 /.python_history
 /.zsh_history
 /.viminfo
 
 {{ if ne .chezmoi.os "darwin" -}}
-# macOS specific
+# Paths that are managed but macOS specific
 /.CFUserTextEncoding
 {{ end -}}
