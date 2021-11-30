@@ -10,8 +10,10 @@
 /.Trash
 /.chef
 /.config/chezmoi
+/.local/share/chezmoi
 /.zsh_sessions
 /Documents/Zoom
+/Downloads
 
 # Everything in src should be a VCS repo of some sort
 /src
@@ -27,6 +29,9 @@
 /Music/Music/Media.localized/
 /Music/Music/Music Library.musiclibrary/
 
+# Synced via Steam
+/.local/share/zachtronics industries
+
 # Per-machine secrets
 /.ssh/id_*
 /.meteorsession
@@ -38,13 +43,16 @@
 /.zcompdump
 /Library/Caches
 
-# History files
+# History files (I'm taking a loose view of "history" here - anything that is automatically populated on a machine from usage)
+/.cups/lpoptions
 /.irb_history
 /.lesshst
+/.local/share/recently-used.xbel
 /.node_repl_history
 /.python_history
-/.zsh_history
+/.ssh/known_hosts
 /.viminfo
+/.zsh_history
 
 {{ if ne .chezmoi.os "darwin" -}}
 # Paths that are managed but macOS specific
