@@ -1,4 +1,4 @@
-export LESS="-FR"
+export LESS="FRX"
 export LESSQUIET=1
 
 autoload -Uz select-word-style
