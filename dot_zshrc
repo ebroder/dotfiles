@@ -42,6 +42,10 @@ which rbenv > /dev/null && eval "$(rbenv init -)"
 
 \. ~/.iterm2_shell_integration.zsh
 
+if [ "$(uname)" = "Darwin" ] && ! ssh-add -l > /dev/null; then
+  ssh-add --apple-load-keychain
+fi
+
 autoload -Uz vcs_info
 precmd_functions+=( vcs_info )
 zstyle ":vcs_info:*" formats " (%b)" # default " (%s)-[%b]-"
