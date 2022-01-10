@@ -1,5 +1,6 @@
 {{- $meteor := "" -}}
 {{- $nvm := "" -}}
+{{- $golang := "" -}}
 
 {{- if (hasKey . "meteor") -}}
 {{-   $meteor = .meteor -}}
@@ -15,9 +16,16 @@
 {{-   $nvm = promptBool "Setup NVM" -}}
 {{- end -}}
 
+{{- if (hasKey . "golang") -}}
+{{-   $golang = .golang -}}
+{{- else -}}
+{{-   $golang = promptBool "Setup Golang" -}}
+{{- end -}}
+
 [data]
   meteor = {{ $meteor }}
   nvm = {{ $nvm }}
+  golang = {{ $golang }}
 
 [interpreters.sh]
   command = 'bash'
