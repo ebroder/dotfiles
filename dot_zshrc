@@ -25,8 +25,13 @@ setopt hist_reduce_blanks
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
-if [ -x /opt/homebrew/bin/brew ]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
+if [ "$(uname)" = "arm64" ]; then
+  export BREWPREFIX="/opt/homebrew"
+else
+  export BREWPREFIX="/usr/local"
+fi
+if [ -x "$BREWPREFIX"/bin/brew ]; then
+  eval "$("$BREWPREFIX"/bin/brew shellenv)"
   fpath+=("$(brew --prefix)/share/zsh/site-functions")
 fi
 
