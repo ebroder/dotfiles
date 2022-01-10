@@ -20,6 +20,7 @@ setopt hist_reduce_blanks
 
 [ -d "$HOME/.meteor" ] && path+=("$HOME/.meteor")
 [ -d "$HOME/.local/bin" ] && path+=("$HOME/.local/bin")
+[ -d "$HOME/go/bin" ] && path+=("$HOME/go/bin")
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
