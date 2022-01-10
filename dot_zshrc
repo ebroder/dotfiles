@@ -25,7 +25,7 @@ setopt hist_reduce_blanks
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
-if [ "$(uname)" = "arm64" ]; then
+if [ "$(uname -m)" = "arm64" ]; then
   export BREWPREFIX="/opt/homebrew"
 else
   export BREWPREFIX="/usr/local"
