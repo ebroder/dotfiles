@@ -39,20 +39,27 @@
 
 # Local cache directories
 /.cache
+/.dts
+/.gem/ruby
+/.gem/specs
 /.zcompcache
 /.zcompdump
 /Library/Caches
 
 # History files (I'm taking a loose view of "history" here - anything that is automatically populated on a machine from usage)
 /.cups/lpoptions
+/.dbshell
+/.gore/history
 /.irb_history
 /.lesshst
 /.local/share/recently-used.xbel
+/.local/share/pry
 /.mongorc.js
 /.node_repl_history
 /.python_history
 /.ssh/known_hosts
 /.viminfo
+/.wget-hsts
 /.zsh_history
 
 {{ if ne .chezmoi.os "darwin" -}}
