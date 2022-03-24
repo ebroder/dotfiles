@@ -19,6 +19,7 @@ setopt hist_ignore_all_dups
 setopt hist_reduce_blanks
 
 [ -d "$HOME/.meteor" ] && path+=("$HOME/.meteor")
+[ -d "$HOME/bin" ] && path+=("$HOME/bin")
 [ -d "$HOME/.local/bin" ] && path+=("$HOME/.local/bin")
 [ -d "$HOME/go/bin" ] && path+=("$HOME/go/bin")
 
@@ -45,10 +46,11 @@ fi
 which lesspipe.sh > /dev/null && export LESSOPEN="|lesspipe.sh %s" LESS_ADVANCED_PREPROCESSOR=1
 which rbenv > /dev/null && eval "$(rbenv init -)"
 
-\. ~/.iterm2_shell_integration.zsh
-
-if [ "$(uname)" = "Darwin" ] && ! ssh-add -l > /dev/null; then
-  ssh-add --apple-load-keychain
+if [ "$(uname)" = "Darwin" ]; then
+  \. ~/.iterm2_shell_integration.zsh
+  if ! ssh-add -l > /dev/null; then
+    ssh-add --apple-load-keychain
+  fi
 fi
 
 autoload -Uz vcs_info
