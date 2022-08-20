@@ -1,26 +1,14 @@
-{{- $meteor := "" -}}
 {{- $nvm := "" -}}
-{{- $golang := "" -}}
 
-{{- if (hasKey . "meteor") -}}
-{{-   $meteor = .meteor -}}
-{{- else -}}
-{{-   $meteor = promptBool "Setup Meteor" -}}
-{{- end -}}
+{{- $meteor := promptBoolOnce . "meteor" "Setup Meteor" -}}
 
-{{- if (hasKey . "nvm") -}}
-{{-   $nvm = .nvm -}}
-{{- else if $meteor -}}
+{{- if $meteor -}}
 {{-   $nvm = true -}}
 {{- else -}}
-{{-   $nvm = promptBool "Setup NVM" -}}
+{{-   $nvm = promptBoolOnce . "nvm" "Setup NVM" -}}
 {{- end -}}
 
-{{- if (hasKey . "golang") -}}
-{{-   $golang = .golang -}}
-{{- else -}}
-{{-   $golang = promptBool "Setup Golang" -}}
-{{- end -}}
+{{- $golang := promptBoolOnce . "golang" "Setup Golang" -}}
 
 [data]
   meteor = {{ $meteor }}
